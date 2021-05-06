@@ -11,7 +11,7 @@ class Config(object):
     TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     APP = None
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Sapiencia123@localhost:3306/flask'
+    SQLALCHEMY_DATABASE_URI = f"postgresql://root:{os.getenv('PGPASSWORD')}@{os.getenv('PGHOST')}:{os.getenv('PGPORT')}/flask"
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///banco.db'
     SENDGRID_API_KEY = 'API_KEY'
     MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN') if os.getenv('MAILGUN_DOMAIN') else None
@@ -23,8 +23,8 @@ class Config(object):
 class DevelopmentConfig(Config):
     TESTING = False
     DEBUG = True
-    IP_HOST = 'localhost'
-    PORT_HOST = 5000
+    IP_HOST = os.getenv('APIHOST')
+    PORT_HOST = int(os.getenv('APIPORT'))
     URL_MAIN = 'http://%s:%s/' % (IP_HOST, PORT_HOST)
 
 class TestingConfig(Config):
