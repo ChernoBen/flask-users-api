@@ -13,7 +13,7 @@ class UserModel(banco.Model):
     user_id = banco.Column(banco.Integer,primary_key=True,autoincrement=True)
     email = banco.Column(banco.String(100),nullable=False,unique=True)
     password = banco.Column(banco.String(120),nullable=False,unique=True)
-    ativado = banco.Column(banco.Boolean,default=False,nullable=True)
+    ativado = banco.Column(banco.Boolean,default=True,nullable=True)
 
     def __init__(self,email,password,ativado=True):
         self.email = email

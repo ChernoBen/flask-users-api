@@ -11,8 +11,8 @@ class Config(object):
     TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     APP = None
-    #SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Sapiencia123@localhost:3306/banco'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///banco.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Sapiencia123@localhost:3306/flask'
+    #SQLALCHEMY_DATABASE_URI = 'sqlite:///banco.db'
     SENDGRID_API_KEY = 'API_KEY'
     MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN') if os.getenv('MAILGUN_DOMAIN') else None
     MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY') if os.getenv('MAILGUN_API_KEY') else None

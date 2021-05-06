@@ -43,7 +43,7 @@ class UserRegister(Resource):
         id = user.user_id
         try:
             user.save_user()
-            user.send_email_confirmation()
+            #user.send_email_confirmation()
         except Exception as e:
             user.delete_user()
             print(e)
