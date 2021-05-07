@@ -15,8 +15,6 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-ENV FLASK_ENV=development
-
 ENTRYPOINT ["python"]
 
 CMD ["run.py"]

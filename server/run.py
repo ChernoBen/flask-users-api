@@ -9,5 +9,5 @@ config.APP = create_app(app_active)
 if __name__ == '__main__':
     #config.IP_HOST
     #config.PORT_HOST
-    config.APP.run(host=0.0.0.0, port=config.PORT_HOST=8000)
+    config.APP.run(host='0.0.0.0',debug=True)
     reload(sys)
