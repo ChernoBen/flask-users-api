@@ -11,14 +11,20 @@ class Config(object):
     TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
     APP = None
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + os.getenv('MYSQL_USER') + ':' + os.getenv('MYSQL_ROOT_PASSWORD') + '@localhost:3306/'+ os.getenv('MYSQL_DATABASE')
+    #SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + os.getenv('MYSQL_USER') + ':' + os.getenv('MYSQL_PASSWORD') + '@127.0.0.1:32000/'+ os.getenv('MYSQL_DATABASE')
+    #SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{os.getenv('MYSQL_USER')}:{os.getenv('MYSQL_PASSWORD')}@0.0.0.0:7777/{os.getenv('MYSQL_DATABASE')}"
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///banco.db'
     SENDGRID_API_KEY = 'API_KEY'
     MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN') if os.getenv('MAILGUN_DOMAIN') else None
     MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY') if os.getenv('MAILGUN_API_KEY') else None
     FROM_TITLE = 'NO-REPLY'
     FROM_EMAIL = 'no-reply@flaskrestapi.com'
-
+    PGUSER = os.getenv('PGUSER')
+    PGPORT = os.getenv('PGPORT')
+    PGHOST = os.getenv('PGHOST')
+    PGDATABASE = os.getenv('PGDATABASE')
+    PGPASSWORD = os.getenv('PGPASSWORD')
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{PGUSER}:{PGPASSWORD}@{PGHOST}:{PGPORT}/{PGDATABASE}"
 
 class DevelopmentConfig(Config):
     TESTING = False
