@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+    postgres:
+        image: 'postgres:latest'
+        environment:
+            - POSTGRES_PASSWORD=postgres_password
+    nginx:
+        restart: always
+        build:
+            dockerfile: Dockerfile
+            context: ./nginx
+        ports:
+            - '3050:80'
+        depends_on:
+            - api
+    api:
+        build:
+            dockerfile: Dockerfile
+            context: ./server
+        volumes:
+            - /venv
+            - ./server:/app
+        environment:
+            - APIHOST=127.0.0.1
+            - APIPORT=8000
+            - PGUSER=postgres
+            - PGHOST=postgres
+            - PGDATABASE=postgres
+            - PGPASSWORD=postgres_password
+            - PGPORT=5432
+            - FLASK_ENV=development

@@ -24,7 +24,7 @@ class DevelopmentConfig(Config):
     TESTING = False
     DEBUG = True
     IP_HOST = os.getenv('APIHOST')
-    PORT_HOST = int(os.getenv('APIPORT'))
+    PORT_HOST = os.getenv('APIPORT')
     URL_MAIN = 'http://%s:%s/' % (IP_HOST, PORT_HOST)
 
 class TestingConfig(Config):
